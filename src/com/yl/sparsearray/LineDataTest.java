@@ -102,4 +102,12 @@ public class LineDataTest {
             System.out.println();
         }
     }
+
+    /**
+     * 队列
+     */
+    @Test
+    public void queueTest() {
+
+    }
 }
