@@ -107,7 +107,8 @@ public class LineDataTest {
      * 队列
      */
     @Test
-    public void queueTest() {
+    public void addQueueTest() {
+
 
     }
 }
