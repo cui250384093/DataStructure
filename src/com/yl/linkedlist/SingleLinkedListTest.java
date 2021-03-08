@@ -16,6 +16,7 @@ public class SingleLinkedListTest {
         HeroNode hero2 = new HeroNode(2, "吴用", "智多星");
         HeroNode hero3 = new HeroNode(3, "武松", "行者");
         HeroNode hero4 = new HeroNode(4, "李逵", "黑旋风");
+        HeroNode hero5 = new HeroNode(5, "张青", "菜园子");
 
         sll.add(hero1);
         sll.add(hero2);
@@ -23,10 +24,13 @@ public class SingleLinkedListTest {
         sll.add(hero4);
         sll.list();
 
-        sll.remove(hero1);
+        sll.del(hero5);
         sll.list();
 
+        System.out.println(sll.getLength());
 
+        SingleLinkedList reverse = sll.reverse();
+        reverse.list();
     }
 }
 
@@ -49,21 +53,54 @@ class SingleLinkedList {
 
     }
 
-    public void remove(HeroNode node) {
+    public int getLength() {
         HeroNode temp = head;
+        int length = 0;
+
+        while (temp.next != null) {
+            length++;
+            temp = temp.next;
+        }
+
+        return length;
+    }
+
+    public boolean del(HeroNode node) {
+        HeroNode temp = head;
+        boolean flag = false;
 
         while (true) {
+
             if (temp.next == null) {
                 System.out.println("删除失败！");
-                return;
+                break;
             }
 
             if (temp.next == node) {
                 temp.next = node.next;
-                return;
+                flag = true;
+                break;
             }
+
             temp = temp.next;
         }
+
+        return flag;
+    }
+
+    public SingleLinkedList reverse() {
+        SingleLinkedList nsll = new SingleLinkedList();
+
+        while (head.next != null) {
+            HeroNode temp = head.next.next;
+            HeroNode ntemp = nsll.head.next;
+            nsll.head.next = head.next;
+            nsll.head.next.next = ntemp;
+            head.next = temp;
+        }
+
+        return nsll;
+
     }
 
     public HeroNode getLastNode() {
