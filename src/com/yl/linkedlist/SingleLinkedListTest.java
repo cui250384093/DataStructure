@@ -2,6 +2,8 @@ package com.yl.linkedlist;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Stack;
+
 /**
  * @author candk
  * @Description
@@ -29,8 +31,9 @@ public class SingleLinkedListTest {
 
         System.out.println(sll.getLength());
 
-        SingleLinkedList reverse = sll.reverse();
-        reverse.list();
+//        SingleLinkedList reverse = sll.reverse();
+//        reverse.list();
+        sll.reversedPrintList();
     }
 }
 
@@ -100,7 +103,20 @@ class SingleLinkedList {
         }
 
         return nsll;
+    }
 
+    public void reversedPrintList() {
+        Stack<HeroNode> stack = new Stack<>();
+        HeroNode temp = head.next;
+
+        while (temp != null) {
+            stack.add(temp);
+            temp = temp.next;
+        }
+
+        while (stack.size() > 0) {
+            System.out.println(stack.pop());
+        }
     }
 
     public HeroNode getLastNode() {
