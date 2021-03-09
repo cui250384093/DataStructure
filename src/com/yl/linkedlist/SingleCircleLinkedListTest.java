@@ -2,8 +2,6 @@ package com.yl.linkedlist;
 
 import org.junit.jupiter.api.Test;
 
-import java.time.Period;
-
 /**
  * @author candk
  * @Description
@@ -23,12 +21,13 @@ public class SingleCircleLinkedListTest {
         Person nhead = scl.getHead();
         Person temp = null;
         while (true) {
-            temp = scl.get(nhead, 2);
+            temp = scl.get(nhead, 1);
             System.out.println(temp);
-            if (temp == null) {
+            nhead = temp.getNext();
+            if (nhead.getNext() == nhead) {
+                System.out.println(nhead);
                 break;
             }
-            nhead = temp.getNext();
         }
     }
 }
@@ -78,6 +77,7 @@ class SingleCircleLinkedList {
 
     public Person get(Person head, int num) {
         Person curPerson = head;
+
         for (int i = 1; i < num; i++) {
             curPerson = curPerson.getNext();
         }
@@ -90,6 +90,7 @@ class SingleCircleLinkedList {
     public Person getHead() {
         return first;
     }
+
 }
 
 class Person {
