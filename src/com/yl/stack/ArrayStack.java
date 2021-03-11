@@ -58,6 +58,10 @@ public class ArrayStack {
         return temp;
     }
 
+    public int peek() {
+        return stack[top];
+    }
+
     /**
      *
      */
