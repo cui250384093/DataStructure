@@ -21,7 +21,7 @@ public class BinarySearch {
     }
 
     /**
-     *
+     * mid = (left + right) / 2 = low + 1/2 * (right - left) -> left + (right - left) * (findVal - arr[left]) / (arr[right] - arr[left])
      * @param arr 查找数组
      * @param left 左边索引
      * @param right 右边索引
