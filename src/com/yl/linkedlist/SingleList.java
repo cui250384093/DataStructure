@@ -51,6 +51,19 @@ public class SingleList <T> {
         return length;
     }
 
+    public int findPosition(T data) {
+        Entry var = head.next;
+        int position = 0;
+        while (var != null) {
+            if (var.data == data) {
+                return position;
+            }
+            var = var.next;
+            position++;
+        }
+        return -1;
+    }
+
     public void posPush(int pos, T data) {
         if(pos < 0 || pos > getLength()) {
             return;
