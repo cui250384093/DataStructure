@@ -84,9 +84,22 @@ public class SingleList <T> {
                 var.next = var.next.next;
                 return true;
             }
-            var.next = var;
+            var= var.next;
         }
         return false;
+    }
+
+    public T pop() {
+        Entry var = head;
+        while (var != null) {
+            if (var.next.next == null) {
+                T data = var.next.data;
+                var.next = null;
+                return data;
+            }
+            var= var.next;
+        }
+        return null;
     }
 
     public void show() {

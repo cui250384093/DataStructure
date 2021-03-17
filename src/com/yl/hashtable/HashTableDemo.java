@@ -21,5 +21,9 @@ public class HashTableDemo {
         list.tailPush(emp3);
         list.show();
         System.out.println(list.findPosition(emp3));
+        System.out.println(list.pop());
+        System.out.println(list.pop());
+        System.out.println(list.pop());
+        System.out.println(list.pop());
     }
 }

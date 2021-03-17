@@ -15,6 +15,7 @@ public class Employee {
     }
 
     public Employee(String name) {
+        id++;
         this.name = name;
     }
 
