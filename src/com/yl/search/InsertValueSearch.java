@@ -2,7 +2,7 @@ package com.yl.search;
 
 /**
  * @author candk
- * @Description
+ * @Description 可以看做二分查找的优化，体现为mid的自适应取值
  * @date 3/17/21 - 9:46 AM
  */
 public class InsertValueSearch {
@@ -30,7 +30,7 @@ public class InsertValueSearch {
             return -1;
         }
 
-        //得到mid
+        //得到mid,自适应
         int mid = left + (right - left) * (findVal - arr[left]) / (arr[right] - arr[left]);
         int midVal = arr[mid];
         if (findVal > midVal) {
