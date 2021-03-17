@@ -2,10 +2,6 @@ package com.yl.hashtable;
 
 import com.yl.linkedlist.SingleList;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-
-
 /**
  * @author candk
  * @Description
