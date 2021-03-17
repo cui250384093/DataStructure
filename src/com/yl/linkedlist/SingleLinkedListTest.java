@@ -14,11 +14,11 @@ public class SingleLinkedListTest {
     @Test
     public void test1() {
         SingleLinkedList sll = new SingleLinkedList();
-        HeroNode hero1 = new HeroNode(1, "宋江", "及时雨");
-        HeroNode hero2 = new HeroNode(2, "吴用", "智多星");
-        HeroNode hero3 = new HeroNode(3, "武松", "行者");
-        HeroNode hero4 = new HeroNode(4, "李逵", "黑旋风");
-        HeroNode hero5 = new HeroNode(5, "张青", "菜园子");
+        Employee hero1 = new Employee(1, "宋江", "及时雨");
+        Employee hero2 = new Employee(2, "吴用", "智多星");
+        Employee hero3 = new Employee(3, "武松", "行者");
+        Employee hero4 = new Employee(4, "李逵", "黑旋风");
+        Employee hero5 = new Employee(5, "张青", "菜园子");
 
         sll.add(hero1);
         sll.add(hero2);
@@ -42,22 +42,22 @@ public class SingleLinkedListTest {
  */
 class SingleLinkedList {
 
-    private HeroNode  head = new HeroNode(0, "", "");
+    private Employee head = new Employee(0, "", "");
 
     /**
      *
      * @param node
      */
-    public void add(HeroNode node) {
+    public void add(Employee node) {
         getLastNode().next = node;
     }
 
-    public void addByOrder(HeroNode node) {
+    public void addByOrder(Employee node) {
 
     }
 
     public int getLength() {
-        HeroNode temp = head;
+        Employee temp = head;
         int length = 0;
 
         while (temp.next != null) {
@@ -68,8 +68,8 @@ class SingleLinkedList {
         return length;
     }
 
-    public boolean del(HeroNode node) {
-        HeroNode temp = head;
+    public boolean del(Employee node) {
+        Employee temp = head;
         boolean flag = false;
 
         while (true) {
@@ -95,8 +95,8 @@ class SingleLinkedList {
         SingleLinkedList nsll = new SingleLinkedList();
 
         while (head.next != null) {
-            HeroNode temp = head.next.next;
-            HeroNode ntemp = nsll.head.next;
+            Employee temp = head.next.next;
+            Employee ntemp = nsll.head.next;
             nsll.head.next = head.next;
             nsll.head.next.next = ntemp;
             head.next = temp;
@@ -106,8 +106,8 @@ class SingleLinkedList {
     }
 
     public void reversedPrintList() {
-        Stack<HeroNode> stack = new Stack<>();
-        HeroNode temp = head.next;
+        Stack<Employee> stack = new Stack<>();
+        Employee temp = head.next;
 
         while (temp != null) {
             stack.add(temp);
@@ -119,8 +119,8 @@ class SingleLinkedList {
         }
     }
 
-    public HeroNode getLastNode() {
-        HeroNode temp = head;
+    public Employee getLastNode() {
+        Employee temp = head;
 
         while (true) {
             if (temp.next == null) {
@@ -133,7 +133,7 @@ class SingleLinkedList {
     }
 
     public void list() {
-        HeroNode temp = head.next;
+        Employee temp = head.next;
 
         if (temp == null) {
             System.out.println("链表为空！");
@@ -156,16 +156,16 @@ class SingleLinkedList {
 /**
  *
  */
-class HeroNode {
+class Employee {
     public int num;
     public String name;
     public String nickname;
-    public HeroNode next;
+    public Employee next;
 
-    public HeroNode() {
+    public Employee() {
     }
 
-    public HeroNode(int num, String name, String nickname) {
+    public Employee(int num, String name, String nickname) {
         this.num = num;
         this.name = name;
         this.nickname = nickname;
