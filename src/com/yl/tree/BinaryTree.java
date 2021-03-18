@@ -27,6 +27,7 @@ import java.util.function.BinaryOperator;
  *  2. 如果当前节点的右子节点不为空，则递归后序遍历
  *  3. 输出当前节点
  * 小结：输出父节点的顺序，确定是前序，中序还是后序
+ * 图解： https://www.pianshen.com/article/7106254596/
  *
  *
  *
