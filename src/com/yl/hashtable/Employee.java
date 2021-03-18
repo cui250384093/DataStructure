@@ -7,16 +7,37 @@ package com.yl.hashtable;
  */
 public class Employee {
 
-    public int id;
-    public String name;
+    private int id;
+    private static int counter;
+    private String name;
 
     public Employee() {
-        id++;
+        id = counter++;
     }
 
     public Employee(String name) {
-        id++;
+        id = counter++;
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public static int getCounter() {
+        return counter;
     }
 
     @Override
