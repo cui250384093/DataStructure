@@ -8,6 +8,7 @@ package com.yl.huffmantree;
 public class Node implements Comparable<Node>{
 
     int value;
+    char c;
     Node left;
     Node right;
 
@@ -16,6 +17,11 @@ public class Node implements Comparable<Node>{
 
     public Node(int value) {
         this.value = value;
+    }
+
+    public Node(int value, char c) {
+        this.value = value;
+        this.c = c;
     }
 
     public Node(int value, Node left, Node right) {
@@ -38,6 +44,7 @@ public class Node implements Comparable<Node>{
     public String toString() {
         return "Node{" +
                 "value=" + value +
+                ", c=" + c +
                 '}';
     }
 
