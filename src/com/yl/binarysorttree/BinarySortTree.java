@@ -1,6 +1,5 @@
 package com.yl.binarysorttree;
 
-import java.util.zip.Inflater;
 
 /**
  * @author candk
@@ -72,19 +71,27 @@ public class BinarySortTree {
 
         //一个子树的情况
         if (targetNode.left != null && targetNode.right == null) {
-            if (targetNode == parent.left) {
-                parent.left = targetNode.left;
+            if (parent != null) {
+                if (targetNode == parent.left) {
+                    parent.left = targetNode.left;
+                } else {
+                    parent.right = targetNode.left;
+                }
             } else {
-                parent.right = targetNode.left;
+                root = targetNode.left;
             }
             return true;
         }
 
         if (targetNode.left == null) {
-            if (targetNode == parent.left) {
-                parent.left = targetNode.right;
+            if (parent != null) {
+                if (targetNode == parent.left) {
+                    parent.left = targetNode.right;
+                } else {
+                    parent.right = targetNode.right;
+                }
             } else {
-                parent.right = targetNode.right;
+                root = targetNode.right;
             }
             return true;
         }
