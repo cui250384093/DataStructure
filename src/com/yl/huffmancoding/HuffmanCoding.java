@@ -1,6 +1,7 @@
 package com.yl.huffmancoding;
 
 import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import java.util.*;
 
@@ -12,10 +13,12 @@ import java.util.*;
 public class HuffmanCoding {
 
     public static void main(String[] args) {
-        String str = "i like like like java do you like a java";
+        String str = "i like like like java do you like a java !";
 
+        System.out.println(str);
         byte[] bytes = strToHuffmanCodes(str);
-        System.out.println(Arrays.toString(bytes));
+        String b = huffmanCodeToString(bytes);
+        System.out.println(b);
 
 
     }
@@ -45,8 +48,9 @@ public class HuffmanCoding {
         for (byte b : bytes) {
             stringBuilder.append(huffmanCodes.get(b));
         }
+        System.out.println(stringBuilder.toString());
 
-        int len = (stringBuilder.length() % 8 == 0)? stringBuilder.length(): stringBuilder.length() + 1;
+        int len = (stringBuilder.length() % 8 == 0)? stringBuilder.length() / 8: stringBuilder.length() / 8 + 1;
         byte[] huffmanCodeBytes = new byte[len];
 
         for (int i = 0, index = 0; i < stringBuilder.length(); i += 8, index++) {
@@ -61,6 +65,41 @@ public class HuffmanCoding {
 
         return huffmanCodeBytes;
     }
+
+    private static String huffmanCodeToString(byte[] huffmanCode) {
+        ArrayList<Byte> byteArrayList = new ArrayList<>();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < huffmanCode.length - 1; i++) {
+            stringBuilder.append(String.format("%8s", Integer.toBinaryString(huffmanCode[i] & 0xFF)).replace(' ', '0'));
+        }
+        //TODO: 最后一个字节待优化
+        String str = Integer.toBinaryString(huffmanCode[huffmanCode.length - 1] | 256).replace(' ', '0');
+        String sub = str.substring(str.length() - 0);
+        stringBuilder.append(sub);
+
+        String huffmanString = new String(stringBuilder);
+        HashMap<String, Byte> byteHashMap = new HashMap<>(10);
+        for (Byte key : huffmanCodes.keySet()) {
+            byteHashMap.put(huffmanCodes.get(key), key);
+        }
+        System.out.println(huffmanString);
+        for (int i = 1, index = 0; i <= huffmanString.length(); i++) {
+            String substring = huffmanString.substring(index, i);
+            if (byteHashMap.get(substring) != null) {
+                byteArrayList.add(byteHashMap.get(substring));
+                index = i;
+            }
+        }
+
+        byte[] huffmanBytes = new byte[byteArrayList.size()];
+        for (int i = 0; i < byteArrayList.size(); i++) {
+            huffmanBytes[i] = byteArrayList.get(i);
+        }
+
+        return new String(huffmanBytes);
+    }
+
 
 
     /**
