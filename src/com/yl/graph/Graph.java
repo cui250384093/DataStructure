@@ -114,7 +114,7 @@ public class Graph {
     }
 
     /**
-     * 深度遍历图
+     * 深度遍历图 deep first search
      * @param isVisited
      * @param i
      */
@@ -144,7 +144,7 @@ public class Graph {
     }
 
     /**
-     * 广度优先遍历
+     * 广度优先遍历 broad first search
      * @param isVisited
      * @param i
      */
