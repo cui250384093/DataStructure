@@ -119,11 +119,42 @@ public class Node {
         }
     }
 
+    /**
+     * 当前结点为根结点的子树的最小值结点
+     * @return
+     */
     public Node subTreeMinValue() {
         if (this.left == null) {
             return this;
         } else {
             return this.left.subTreeMinValue();
         }
+    }
+
+
+    /**
+     * 左子树的高度
+     * @return
+     */
+    public int leftHeight() {
+        if (left == null) {
+            return 0;
+        }
+        return left.height();
+    }
+
+    /**
+     * 右子树的高度
+     * @return
+     */
+    public int rightHeight() {
+        if (right == null) {
+            return 0;
+        }
+        return right.height();
+    }
+
+    public int height() {
+        return Math.max(left == null ? 0: left.height(), right == null? 0: right.height()) + 1;
     }
 }
