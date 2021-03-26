@@ -25,6 +25,10 @@ public class BinarySortTree {
         this.root = root;
     }
 
+    /**
+     * 当子树不平衡时会触发root结点的旋转
+     * @param node
+     */
     public void add(Node node) {
         if (root == null) {
             root = node;

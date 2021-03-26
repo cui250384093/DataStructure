@@ -68,6 +68,19 @@ public class Node {
                 this.right.add(node);
             }
         }
+
+        //当添加完一个结点后，如果右子树的高度-左子树的高度>1，坐旋转
+        if (rightHeight() - leftHeight() > 1) {
+            if (right != null && right.leftHeight() > right.rightHeight()) {
+                right.rightRotate();
+            }
+            leftRotate();
+        } else if (leftHeight() - rightHeight() > 1) {
+            if (left != null && left.rightHeight() > left.leftHeight()) {
+                left.leftRotate();
+            }
+            rightRotate();
+        }
     }
 
     public void infixOrder() {
@@ -156,5 +169,43 @@ public class Node {
 
     public int height() {
         return Math.max(left == null ? 0: left.height(), right == null? 0: right.height()) + 1;
+    }
+
+    /**
+     * 平衡二叉树左旋
+     * 1. 创建一个新的结点newNode，值等于当前结点的值 Node newNode = new Node(value)
+     * 2. 把新结点的左子树设置为当前结点的左子树 newNode.left = left
+     * 3. 把新结点的右子树设置为当前结点的右子树的左子树 newNode.right = right.left
+     * 4. 把当前结点的值替换为右子结点的值 value = right.value
+     * 5. 把当前结点的右子树设置为右子树的右子树 right = right.right
+     * 6. 把当前结点的左子树设置为新结点 left = newNode
+     *
+     */
+    public void leftRotate() {
+        Node newNode = new Node(value);
+        newNode.left = left;
+        newNode.right = right.left;
+        value = right.value;
+        right = right.right;
+        left = newNode;
+    }
+
+    /**
+     *  平衡二叉树右旋
+     *  1. 创建一个新的结点newNode，值等于当前结点的值 Node newNode = new Node(value)
+     *  2. 将新结点右子树设置为当前结点的右子树 newNode.right = right
+     *  3. 将新结点的左子树设置为当前结点的左子树的右子树 newNode.left = left.right
+     *  4. 将当前结点的值替换为左子节点的值 value = left.value
+     *  5. 将当前结点的左子树替换为左子树的左子树 left = left.left
+     *  6. 将当前结点的右子树设置为新结点 right = newNode
+     *
+     */
+    public void rightRotate() {
+        Node newNode = new Node(value);
+        newNode.right = right;
+        newNode.left = left.right;
+        value = left.value;
+        left = left.left;
+        right = newNode;
     }
 }
